@@ -28,6 +28,8 @@ module.exports.run = async (bot, message, args) => {
 
             const channel = bot.channels.get("635899073681031218")
 
+            message.author.send(`thanks for buying a ${response2} server, we will make your server in 7 days if it takes longer you can make a ticket. Use your id as proof id: ${message.author.id}`)
+
             prompter.reaction(channel, {
                 question: `**NEW ORDER** \npaypal email:${response1}\nuser: ${message.author}\nwhat he wants: ${response2} (complete this order in a week)`,
                 userId: message.author.id,
