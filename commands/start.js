@@ -30,19 +30,10 @@ module.exports.run = async (bot, message, args) => {
 
             message.author.send(`thanks for buying a ${response2} server, we will make your server in 7 days if it takes longer you can make a ticket. Use your id as proof id: ${message.author.id}`)
 
-            prompter.reaction(channel, {
-                question: `**NEW ORDER** \npaypal email:${response1}\nuser: ${message.author}\nwhat he wants: ${response2} (complete this order in a week)`,
-                userId: message.author.id,
-                timeout: 604800000,
-            }).then(response => {
-                if(!responses) {
-                    message.author.send("sorry we couldn't complete your order in 1 week")
-                    channel.send(`${message.author}'s order wasn't complete`)
-                }
-
-                if(response === 'yes') return channel.send(`${message.author}'s order is completed`)
-                if(response === 'no') return channel.send(`${message.author}'s didn't complete for a reason`)
-            })
+            channel.send(`**NEW ORDER**\npaypal email:${response1}\nuser:${message.author}\nwhat he wants:**${response2}**\norder id:${message.author.id}\ncomplete this in a week`).then( function (message) {
+                await message.react(":white_check_mark:")
+                await message.react(":x:")
+            }
         })
     })
 }
