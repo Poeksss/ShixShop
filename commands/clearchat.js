@@ -1,9 +1,9 @@
 const discord = require("discord.js")
 
 module.exports.run = async (bot, message, args) => {
-    let Role = message.guild.roles.find("633765431189962762")
+    var role = message.guild.roles.find(role => role.name === "Staffmember")
 
-    if(!message.member.roles.has(Role)) return message.channel.send("sorry only 🌐Staffmember's can purge channels")
+    if(message.member.roles.has(role)) return message.channel.send("you need staff role to do this")
 
     const deleteCount = parseInt(args[0], 10);
     
