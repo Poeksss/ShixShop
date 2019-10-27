@@ -1,6 +1,10 @@
 const discord = require("discord.js")
 
 module.exports.run = async (bot, message, args) => {
+    let Role = message.guild.roles.find("name", "🌐Staffmember")
+
+    if(!message.member.roles.has(Role)) return message.channel.send("sorry only 🌐Staffmember's can purge channels")
+
     const deleteCount = parseInt(args[0], 10);
     
     if(!deleteCount || deleteCount < 2 || deleteCount > 100)
