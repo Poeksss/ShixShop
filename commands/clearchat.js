@@ -1,7 +1,7 @@
 const discord = require("discord.js")
 
 module.exports.run = async (bot, message, args) => {
-    let Role = message.guild.roles.find("name", "🌐Staffmember")
+    let Role = message.guild.roles.find("633765431189962762")
 
     if(!message.member.roles.has(Role)) return message.channel.send("sorry only 🌐Staffmember's can purge channels")
 
